@@ -1,0 +1,144 @@
+package PageObjects;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+//import io.reactivex.rxjava3.functions.Action;
+//import org.openqa.selenium.support.FindBy;
+
+public class NewsPage extends BasePage {
+
+
+	//Constructor
+	public NewsPage(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+	
+	//elements
+	
+	//@FindBy(xpath="//a[normalize-space() ='One year of Bluebolt: Advancing our spirit of innovation']")
+	
+	//click on each news
+	@FindBy(xpath="//div[@class='z_a_91bed31b l_a_91bed31b']//a[@data-automation-id='newsItemTitle']")
+    List<WebElement> eachNews;
+	
+	//News-Header
+	@FindBy(xpath="//div[@id='title_text']")
+	WebElement txt_heading;
+	
+	//News-Heading-Details
+	@FindBy(xpath="//div[@data-automation-id='textBox']")
+	WebElement txt_headingDetails;
+	
+	
+	//Associate details hover
+	@FindBy(xpath="//div[@class='lk_ae_9f38462c']")
+	WebElement associateDetails;
+	
+	Actions action = new Actions(driver);
+	
+	//HyperLink
+	@FindBy(tagName="a")
+    List<WebElement> hyperlink;
+	
+	//Share-Button
+	@FindBy(xpath="//button[@data-automation-id='shareButton']")
+	WebElement sharebtn;
+	
+	//Share-Option
+	@FindBy(xpath="//span[text()='Share page']/ancestor::ul")
+	WebElement shareOptions;
+	
+	//Scroll-Body
+	@FindBy(xpath="//div[@class='fw_aa_9f38462c fw_ap_9f38462c mx_ap_9f38462c']")
+	WebElement scrollbody;
+	
+	//Total-Likes
+	@FindBy(xpath="//span[contains(text(),'people liked this')]")	
+	WebElement totalLikes;
+	
+	JavascriptExecutor jse =(JavascriptExecutor)driver;
+
+	
+	
+	
+	//Actions
+	public void clickEachNews(int newsno)
+	{
+		eachNews.get(newsno).click();
+		
+	}
+	public void showNewsDetails() throws InterruptedException
+	{
+		System.out.println("Headling:  "+txt_heading.getText());
+		System.out.println("Details:   "+txt_headingDetails.getText());
+		
+        action.moveToElement(associateDetails).perform();
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='_6sw9u lcpUo kc69i']")));
+        
+        for(WebElement link:hyperlink)
+        {
+        	String url = link.getAttribute("href");
+        	
+        	if(url== null || url.isEmpty())
+        	{
+        		System.out.println("url is empty");
+        		
+        	}
+        	else
+        	{
+        		System.out.println("url is not empty");
+        	}
+        }
+
+        sharebtn.click();
+        //Thread.sleep(2000);
+        
+        
+        System.out.println(shareOptions.getText());
+       // Thread.sleep(1000);
+        
+        //scrollbody.click();
+        //jse.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+		action.keyDown(Keys.PAGE_DOWN).perform();
+
+
+		//System.out.println("Total no of likes: "+totalLikes.getText().charAt(0));
+        
+        driver.navigate().back();
+
+
+	}
+	public int newsSize()
+	{
+		return eachNews.size();
+	}
+	public void scroll() throws InterruptedException
+	{
+		//scrollbody.click();
+		int j =0;
+		while(j!=20) {
+		action.keyDown(Keys.PAGE_DOWN).perform();
+		j++;
+		
+		
+	}
+
+
+	}    
+    
+ }

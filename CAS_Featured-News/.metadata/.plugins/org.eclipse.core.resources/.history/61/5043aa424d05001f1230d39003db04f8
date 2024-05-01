@@ -1,0 +1,17 @@
+package testCases;
+
+import PageObjects.NewsPage;
+import testBase.BaseClass;
+
+public class TC_002_NewsPage extends BaseClass{
+	
+	public void newsPageValidation()
+	{
+		NewsPage nsp = new NewsPage(driver);
+		nsp.clickEachNews();
+		
+		nsp.showNewsDetails();
+		
+	}
+
+}

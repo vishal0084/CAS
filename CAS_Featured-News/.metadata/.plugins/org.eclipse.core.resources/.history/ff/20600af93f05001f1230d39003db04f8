@@ -1,0 +1,24 @@
+package testCases;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import PageObjects.BeCognizantPage;
+import testBase.BaseClass;
+
+public class TC_001_BeCognizantPage extends BaseClass{
+	
+	@Test
+	public void profileValidation()
+	{
+		BeCognizantPage bcp = new BeCognizantPage(driver);
+		bcp.ClickOnProfile();
+		String userName = bcp.userNameVisibility();
+		Assert.assertEquals(userName,"Sen, Moupali (Contractor)");
+		
+		
+	}
+	
+	
+
+}

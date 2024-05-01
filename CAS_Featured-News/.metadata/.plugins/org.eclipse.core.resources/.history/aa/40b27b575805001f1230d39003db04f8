@@ -1,0 +1,18 @@
+package PageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class ShareOption  extends BasePage{
+	
+	//Constructor
+	public ShareOption(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+		
+		@FindBy[xpath="//i[@class='ms-Icon root-90 css-150 ms-Button-menuIcon is-expanded menuIcon-713']"]
+		WebElement shareOption;
+	}
+
+}

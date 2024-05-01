@@ -1,0 +1,25 @@
+package testCases;
+
+import org.testng.annotations.Test;
+
+import PageObjects.NewsPage;
+import testBase.BaseClass;
+
+public class TC_002_NewsPage extends BaseClass{
+	
+	@Test
+	public void newsPageValidation()
+	{
+		NewsPage nsp = new NewsPage(driver);
+		nsp.clickEachNews();
+		
+		nsp.showNewsDetails();
+		nsp.associateDetails();
+		
+		nsp.clickShareBtn();
+		nsp.clickShareOptions();
+		nsp.hyperLinkValidation();
+		
+	}
+
+}

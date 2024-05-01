@@ -1,0 +1,46 @@
+package testCases;
+
+import java.io.IOException;
+
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import PageObjects.NewsPage;
+import Utility.ExcelUtils;
+import testBase.BaseClass;
+@Listeners(Utility.ExtentReportManager.class)
+
+public class TC_002_NewsPage extends BaseClass {
+	
+	@Test
+	public void newsPageValidation() throws InterruptedException, IOException
+	{
+		
+		NewsPage nsp = new NewsPage(driver);
+		int newssize = nsp.newsSize();
+		
+//		ExcelUtils excel = new ExcelUtils();
+//		String xlFile = System.getProperty("user.dir")+"\\testData\\testExcel.xlsx";
+//		
+//		String header = nsp.getTxtHeading();
+		
+		for(int i=0;i<newssize-1;i++)
+		{
+			
+			nsp.clickEachNews(i);
+			nsp.showNewsDetails();
+//			for(int j=0;j<newssize-1;j++)
+//			{
+//			excel.setCellData(xlFile, "Sheet1", j+1, 0,header);
+//			
+//			}
+			//nsp.getBack();
+			
+		}
+		
+	
+				
+	
+		
+	}
+
+}

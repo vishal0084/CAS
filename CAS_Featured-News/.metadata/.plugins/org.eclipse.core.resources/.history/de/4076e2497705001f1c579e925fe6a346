@@ -1,0 +1,25 @@
+package testCases;
+
+import org.testng.annotations.Test;
+
+import PageObjects.NewsPage;
+import testBase.BaseClass;
+
+public class TC_002_NewsPage extends BaseClass{
+	
+	@Test
+	public void newsPageValidation() throws InterruptedException
+	{
+		NewsPage nsp = new NewsPage(driver);
+		
+		for(int i=0;i<=5;i++)
+		{
+			nsp.clickEachNews(i);
+		}
+		nsp.showNewsDetails();
+				
+	
+		
+	}
+
+}

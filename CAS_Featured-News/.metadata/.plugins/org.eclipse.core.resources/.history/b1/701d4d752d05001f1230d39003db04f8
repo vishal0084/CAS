@@ -1,0 +1,33 @@
+package PageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class BeCognizantPage extends BasePage{
+	
+	//Constructor
+		public BeCognizantPage(WebDriver driver) {
+			super(driver);
+			// TODO Auto-generated constructor stub
+		}
+		
+	//Elements
+		
+		//user-button element
+		@FindBy(xpath="//div[@class='mectrl_accountDetails']")
+		WebElement userInfobtn;
+		
+		//User-name element
+		@FindBy(xpath = "//div[@class='mectrl_accountDetails']/div[1]")
+		WebElement txtuserName;
+		
+		//Email element
+		@FindBy(xpath = "//div[@class='mectrl_accountDetails']/div[2]")
+		WebElement txtuserEmail;
+		
+	//Actions
+		
+		
+
+}

@@ -1,0 +1,17 @@
+package testCases;
+
+import org.testng.annotations.Test;
+
+import PageObjects.ShareOption;
+import testBase.BaseClass;
+
+@Test
+public class TC_003_ShareOption extends BaseClass {
+      public void sharePageValidation()
+      {
+    	  ShareOption shp = new ShareOption(driver);
+    	  shp.clickShareBtn();
+    	  shp.clickShareOptions();
+      }
+
+}

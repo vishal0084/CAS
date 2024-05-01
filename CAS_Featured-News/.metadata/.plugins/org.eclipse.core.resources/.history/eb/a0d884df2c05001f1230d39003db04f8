@@ -1,0 +1,11 @@
+package PageObjects;
+
+public class BeCognizantPage extends BasePage{
+	
+	//Constructor
+		public BeCognizantPage(WebDriver driver) {
+			super(driver);
+			// TODO Auto-generated constructor stub
+		}
+
+}

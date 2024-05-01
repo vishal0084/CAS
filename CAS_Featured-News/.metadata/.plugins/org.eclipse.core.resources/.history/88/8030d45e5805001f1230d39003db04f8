@@ -1,0 +1,18 @@
+package PageObjects;
+
+import org.openqa.selenium.WebDriver;
+
+public class ShareOption  extends BasePage{
+	
+	//Constructor
+	public ShareOption(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+		
+		
+		
+		
+		
+	}
+
+}

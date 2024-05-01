@@ -1,0 +1,77 @@
+package PageObjects;
+
+import java.util.List;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class BeCognizantPage extends BasePage{
+	
+	//Constructor
+		public BeCognizantPage(WebDriver driver) {
+			super(driver);
+			// TODO Auto-generated constructor stub
+		}
+		
+	//Elements
+		//profile
+		@FindBy(xpath = "//div[@id='SuiteNavWrapper']//div[@id='O365_HeaderRightRegion']")
+		WebElement imgProfile;
+		
+		//User-name element
+		@FindBy(xpath = "//div[@class='mectrl_accountDetails']/div[1]")
+		WebElement txt_userName;
+		
+		//Email element
+		@FindBy(xpath = "//div[@class='mectrl_accountDetails']/div[2]")
+		WebElement txt_userEmail;
+		
+		//news header 
+		@FindBy(xpath="//div[@class='z_a_91bed31b l_a_91bed31b']//a[@data-automation-id='newsItemTitle']")
+		List<WebElement> list_news;
+		
+	//Actions
+		
+		//click On User-Info-button
+		public void ClickOnProfile()
+		{
+			imgProfile.click();
+		}
+		
+		//check user-name is visible or not
+		public String userNameVisibility()
+		{
+			try {
+				String userName = txt_userName.getText();
+				return userName;
+			}
+			catch(Exception e)
+			{
+				return(e.getMessage());
+			}
+		}
+		//check user-Email is visible or not
+		public String userEmailVisibility()
+		{
+			try {
+				String userEmail = txt_userEmail.getText();
+				return userEmail;
+			}
+			catch(Exception e)
+			{
+				return(e.getMessage());
+			}
+		}
+		//check news header & tool-tip
+		public void newsHeaderVisibility()
+		{
+			System.out.println("News Headline"+"          "+"Tooltip");
+			for(WebElement e:list_news)
+			{
+				System.out.println(e.getText()+"       "+e.getAttribute("title"));
+			}
+					
+		}
+
+}

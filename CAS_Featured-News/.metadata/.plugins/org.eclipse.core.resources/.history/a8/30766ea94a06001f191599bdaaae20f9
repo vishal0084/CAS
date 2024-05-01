@@ -1,0 +1,28 @@
+package testCases;
+
+import java.io.IOException;
+
+import org.testng.annotations.Test;
+import PageObjects.NewsPage;
+//import testBase.BaseClass;
+
+public class TC_002_NewsPage extends TC_001_BeCognizantPage {
+	
+	@Test
+	public void newsPageValidation() throws InterruptedException, IOException
+	{
+		NewsPage nsp = new NewsPage(driver);
+		int newssize = nsp.newsSize();
+		
+		for(int i=0;i<newssize-1;i++)
+		{
+			nsp.clickEachNews(i);
+			nsp.showNewsDetails();
+		}
+	
+				
+	
+		
+	}
+
+}
